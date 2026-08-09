@@ -6,13 +6,13 @@ const studentSchema = new mongoose.Schema(
             type: String,
             required: true,
             unique: true,
-            trim: true
+            trim: true,
         },
 
         name: {
             type: String,
             required: true,
-            trim: true
+            trim: true,
         },
 
         email: {
@@ -20,28 +20,35 @@ const studentSchema = new mongoose.Schema(
             required: true,
             unique: true,
             lowercase: true,
-            trim: true
+            trim: true,
         },
 
         department: {
             type: String,
             required: true,
-            trim: true
+            trim: true,
         },
 
         semester: {
             type: Number,
-            required: true
+            required: true,
+        },
+
+        section: {
+            type: String,
+            required: true,
+            trim: true,
+            uppercase: true,
         },
 
         faceEmbeddings: {
             type: [[Number]],
-            default: []
-        }
+            default: [],
+        },
     },
     {
-        timestamps: true
-    }
+        timestamps: true,
+    },
 );
 
 const Student = mongoose.model("Student", studentSchema);
