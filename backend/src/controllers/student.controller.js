@@ -51,6 +51,56 @@ const createStudent = async (req, res) => {
     }
 };
 
+const registerFace = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { embeddings } = req.body;
+
+        if (!embeddings || !Array.isArray(embeddings)) {
+            return res.status(400).json({
+                success: false,
+                message: "Embeddings are required and must be an array"
+            });
+        }
+
+        const student = await Student.findById(id);
+
+        if (!student) {
+            return res.status(404).json({
+                success: false,
+                message: "Student not found"
+            });
+        }
+
+        for (const embedding of embeddings) {
+            if (!Array.isArray(embedding) || embedding.length !== 128) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Each face embedding must contain exactly 128 numbers"
+                });
+            }
+        }
+
+        student.faceEmbeddings = embeddings;
+
+        await student.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Face registered successfully"
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: "Failed to register face"
+        });
+    }
+};
+
 module.exports = {
-    createStudent
+    createStudent,
+    registerFace
 };
