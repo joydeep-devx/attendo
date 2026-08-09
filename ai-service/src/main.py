@@ -1,16 +1,30 @@
-import opencv2 as cv
-import numpy as np
+# pyrefly: ignore [missing-import]
+from fastapi import FastAPI
 
-cam = cv.VideoCapture(0)
+from src.routes.face_routes import router
 
-while True:
-    ret, frame = cam.read()
-    if not ret:
-        break
 
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    cv.imshow('Video Feed', gray)
+app = FastAPI(
+    title="Smart Classroom Face Recognition AI",
+    version="1.0.0"
+)
 
-    if cv.waitKey(1) & 0xFF == ord('q'):
-        break
-    
+
+app.include_router(router)
+
+
+@app.get("/")
+def root():
+
+    return {
+        "service": "Face Recognition AI",
+        "status": "running"
+    }
+
+
+@app.get("/health")
+def health():
+
+    return {
+        "status": "healthy"
+    }
