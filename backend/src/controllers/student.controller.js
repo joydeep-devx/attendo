@@ -1,4 +1,5 @@
 const Student = require("../models/student.model");
+const mongoose = require("mongoose");
 
 const createStudent = async (req, res) => {
     try {
@@ -32,7 +33,6 @@ const createStudent = async (req, res) => {
             message: "Student created successfully",
             data: student
         });
-
 
     } catch (error) {
         console.error(error);
