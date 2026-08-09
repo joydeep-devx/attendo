@@ -2,13 +2,14 @@ const Student = require("../models/student.model");
 
 const createStudent = async (req, res) => {
     try {
-        const { studentRollNo, name, email, department, semester } = req.body;
+        const { studentRollNo, name, email, department, semester ,section } = req.body;
 
         if (
             !studentRollNo ||
             !name ||
             !email ||
             !department ||
+            !section ||
             semester === undefined
         ){
             return res.status(400).json({
@@ -22,7 +23,8 @@ const createStudent = async (req, res) => {
             name,
             email,
             department,
-            semester
+            semester,
+            section
         });
 
         res.status(201).json({
