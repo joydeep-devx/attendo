@@ -29,6 +29,12 @@ const timetableSchema = new mongoose.Schema(
             required: true,
         },
 
+        teacher: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Teacher",
+            required: true,
+        },
+
         classroom: {
             type: String,
             required: true,
