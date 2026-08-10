@@ -4,6 +4,7 @@ const subjectRouter = require("./routes/subject.routes");
 const attendanceRouter = require("./routes/attendance.routes");
 const timetableRouter = require("./routes/timetable.routes");
 const timeSlotRouter = require("./routes/timeSlot.routes");
+const teacherRouter = require("./routes/teacher.routes");
 
 const app = express();
 
@@ -14,5 +15,7 @@ app.use("/api/subjects", subjectRouter);
 app.use("/api/attendance", attendanceRouter);
 app.use("/api/timetable", timetableRouter);
 app.use("/api/time-slots", timeSlotRouter);
+app.use("/api/teachers", teacherRouter);
+
 
 module.exports = app;
