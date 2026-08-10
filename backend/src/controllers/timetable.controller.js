@@ -3,6 +3,8 @@ const Subject = require("../models/subject.model");
 const Teacher = require("../models/teacher.model");
 const TeacherSubject = require("../models/teacherSubject.model");
 
+const { checkTimetableConflict } = require("../services/timetable.service");
+
 const createTimetable = async (req, res) => {
     try {
         const {
@@ -65,6 +67,26 @@ const createTimetable = async (req, res) => {
             return res.status(409).json({
                 success: false,
                 message: "Teacher is not assigned to this subject",
+            });
+        }
+
+        // Check timetable conflicts
+        const conflict = await checkTimetableConflict({
+            department: department.toUpperCase(),
+            semester,
+            section: section.toUpperCase(),
+            teacher,
+            classroom,
+            dayOfWeek,
+            startTime,
+            endTime,
+        });
+
+        if (conflict.hasConflict) {
+            return res.status(409).json({
+                success: false,
+                type: conflict.type,
+                message: conflict.message,
             });
         }
 
