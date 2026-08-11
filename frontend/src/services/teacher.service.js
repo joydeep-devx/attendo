@@ -22,3 +22,15 @@ export async function createTeacher(teacherData) {
 
   return result.data
 }
+
+export async function deleteTeacher(id) {
+  const response = await fetch(`${API_BASE_URL}/teachers/${id}`, {
+    method: 'DELETE',
+  })
+
+  const result = await response.json()
+
+  if (!response.ok) {
+    throw new Error(result.message || 'Failed to delete teacher')
+  }
+}
