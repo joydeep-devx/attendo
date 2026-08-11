@@ -1,4 +1,5 @@
 const Timetable = require("../models/timetable.model");
+const TimeSlot = require("../models/timeSlot.model");
 
 const checkTimetableConflict = async ({
     department,
@@ -7,19 +8,36 @@ const checkTimetableConflict = async ({
     teacher,
     classroom,
     dayOfWeek,
-    startTime,
-    endTime,
+    timeSlot,
 }) => {
-    // Find timetable entries on the same day
+    // Find the selected time slot
+    const newTimeSlot = await TimeSlot.findById(timeSlot);
+
+    if (!newTimeSlot) {
+        return {
+            hasConflict: true,
+            type: "TIME_SLOT",
+            message: "Time slot not found",
+        };
+    }
+
+    // Find existing timetable entries on the same day
     const existingEntries = await Timetable.find({
         dayOfWeek,
-    });
+    }).populate("timeSlot", "startTime endTime");
+
 
     for (const entry of existingEntries) {
-        // Check whether time overlaps
+        // Make sure the existing entry has a valid time slot
+        if (!entry.timeSlot) {
+            continue;
+        }
+        // Check whether the time slots overlap
         const timeOverlap =
-            startTime < entry.endTime && endTime > entry.startTime;
+            newTimeSlot.startTime < entry.timeSlot.endTime &&
+            newTimeSlot.endTime > entry.timeSlot.startTime;
 
+        // No time overlap means no conflict
         if (!timeOverlap) {
             continue;
         }
