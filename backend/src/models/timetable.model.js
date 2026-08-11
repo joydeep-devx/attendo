@@ -36,9 +36,9 @@ const timetableSchema = new mongoose.Schema(
         },
 
         classroom: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Classroom",
             required: true,
-            trim: true,
         },
 
         dayOfWeek: {
@@ -52,17 +52,13 @@ const timetableSchema = new mongoose.Schema(
                 "Thursday",
                 "Friday",
                 "Saturday",
-                "Sunday"
-            ]
+                "Sunday",
+            ],
         },
 
-        startTime: {
-            type: String,
-            required: true,
-        },
-
-        endTime: {
-            type: String,
+        timeSlot: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "TimeSlot",
             required: true,
         },
     },
@@ -75,7 +71,7 @@ timetableSchema.index({
     department: 1,
     semester: 1,
     section: 1,
-    dayOfWeek: 1
+    dayOfWeek: 1,
 });
 
 const Timetable = mongoose.model("Timetable", timetableSchema);
