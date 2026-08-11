@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { createSubject } from '../../services/subject.service'
+import Field from '../../components/Field'
 
 const initialFormState = {
   subjectCode: '',
@@ -12,19 +13,6 @@ const initialFormState = {
   duration: '',
 }
 
-function Field({ label, ...inputProps }) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label className="font-mono text-xs uppercase tracking-wide text-slate">
-        {label}
-      </label>
-      <input
-        {...inputProps}
-        className="rounded-md border border-line bg-paper px-3 py-2 text-ink outline-none transition focus:border-indigo focus:ring-2 focus:ring-indigo-soft"
-      />
-    </div>
-  )
-}
 
 function SubjectForm() {
   const [formData, setFormData] = useState(initialFormState)
