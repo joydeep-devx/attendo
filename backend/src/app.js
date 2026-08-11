@@ -7,6 +7,7 @@ const timeSlotRouter = require("./routes/timeSlot.routes");
 const teacherRouter = require("./routes/teacher.routes");
 const teacherSubjectRouter = require("./routes/teacherSubject.routes");
 const scheduleConfigRouter = require("./routes/scheduleConfig.routes.js");
+const classroomRouter = require("./routes/classroom.routes");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/api/time-slots", timeSlotRouter);
 app.use("/api/teachers", teacherRouter);
 app.use("/api/teacher-subjects", teacherSubjectRouter);
 app.use("/api/schedule-config", scheduleConfigRouter);
+app.use("/api/classrooms", classroomRouter);
 
 
 module.exports = app;
