@@ -1,10 +1,7 @@
+import AppRoutes from './routes/AppRoutes'
+
 function App() {
-  return (
-    <div>
-      <h1>Attendo</h1>
-      <p>Frontend scaffold is running.</p>
-    </div>
-  )
+  return <AppRoutes />
 }
 
 export default App
