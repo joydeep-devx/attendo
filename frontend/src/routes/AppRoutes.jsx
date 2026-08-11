@@ -14,7 +14,7 @@ function AppRoutes() {
       <Route path="/subjects/new" element={<SubjectForm />} />
       <Route path="/teachers" element={<Teachers />} />
       <Route path="/teachers/new" element={<TeacherForm />} />
-
+      <Route path="/teachers/:id/edit" element={<TeacherForm />} />
     </Routes>
   )
 }

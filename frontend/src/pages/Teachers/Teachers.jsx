@@ -104,6 +104,12 @@ function Teachers() {
                                     {teacher.designation}
                                 </td>
                                 <td className="px-4 py-3 text-right">
+                                    <Link
+                                        to={`/teachers/${teacher._id}/edit`}
+                                        className="mr-4 text-sm text-slate hover:text-indigo"
+                                    >
+                                    Edit
+                                    </Link>
                                     <button
                                         onClick={() => handleDelete(teacher)}
                                         disabled={deletingId === teacher._id}
