@@ -2,6 +2,8 @@ const Timetable = require("../models/timetable.model");
 const Subject = require("../models/subject.model");
 const Teacher = require("../models/teacher.model");
 const TeacherSubject = require("../models/teacherSubject.model");
+const TimeSlot = require("../models/timeSlot.model");
+const Classroom = require("../models/classroom.model");
 
 const { checkTimetableConflict } = require("../services/timetable.service");
 
@@ -15,8 +17,7 @@ const createTimetable = async (req, res) => {
             teacher,
             classroom,
             dayOfWeek,
-            startTime,
-            endTime,
+            timeSlot
         } = req.body;
 
         // Validate required fields
@@ -28,8 +29,7 @@ const createTimetable = async (req, res) => {
             !teacher ||
             !classroom ||
             !dayOfWeek ||
-            !startTime ||
-            !endTime
+            !timeSlot
         ) {
             return res.status(400).json({
                 success: false,
@@ -57,6 +57,26 @@ const createTimetable = async (req, res) => {
             });
         }
 
+        // Check whether classroom exists
+        const existingClassroom = await Classroom.findById(classroom);
+
+        if (!existingClassroom) {
+            return res.status(404).json({
+                success: false,
+                message: "Classroom not found",
+            });
+        }
+
+        // Check whether time slot exists
+        const existingTimeSlot = await TimeSlot.findById(timeSlot);
+
+        if (!existingTimeSlot) {
+            return res.status(404).json({
+                success: false,
+                message: "Time slot not found",
+            });
+        }
+
         // Check whether teacher is assigned to the subject
         const teacherSubjectAssignment = await TeacherSubject.findOne({
             teacher,
@@ -78,8 +98,7 @@ const createTimetable = async (req, res) => {
             teacher,
             classroom,
             dayOfWeek,
-            startTime,
-            endTime,
+            timeSlot,
         });
 
         if (conflict.hasConflict) {
@@ -99,8 +118,7 @@ const createTimetable = async (req, res) => {
             teacher,
             classroom,
             dayOfWeek,
-            startTime,
-            endTime,
+            timeSlot,
         });
 
         res.status(201).json({
@@ -144,9 +162,16 @@ const getTimetable = async (req, res) => {
         const timetable = await Timetable.find(query)
             .populate("subject", "subjectCode subjectName")
             .populate("teacher", "name employeeId email department designation")
+            .populate(
+                "classroom",
+                "name roomType capacity"
+            )
+            .populate(
+                "timeSlot",
+                "name startTime endTime order"
+            )
             .sort({
                 dayOfWeek: 1,
-                startTime: 1,
             });
 
         res.status(200).json({
