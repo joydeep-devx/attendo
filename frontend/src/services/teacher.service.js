@@ -6,3 +6,19 @@ export async function getTeachers() {
   const result = await response.json()
   return result.data
 }
+
+export async function createTeacher(teacherData) {
+  const response = await fetch(`${API_BASE_URL}/teachers`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(teacherData),
+  })
+
+  const result = await response.json()
+
+  if (!response.ok) {
+    throw new Error(result.message || 'Failed to create teacher')
+  }
+
+  return result.data
+}
