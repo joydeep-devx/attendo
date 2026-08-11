@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const NAV_ITEMS = [
   { label: 'Dashboard', path: '/' },
   { label: 'Subjects', path: '/subjects' },
-  { label: 'Teachers', path: null },
+  { label: 'Teachers', path: '/teachers' },
   { label: 'Classrooms', path: null },
   { label: 'Time Slots', path: null },
   { label: 'Schedule Configuration', path: null },
