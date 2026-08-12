@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 // path: null means "not built yet" — rendered disabled instead of a real link
 const NAV_ITEMS = [
-  { label: 'Dashboard', path: '/' },
+  { label: 'Dashboard', path: '/dashboard' },
   { label: 'Subjects', path: '/subjects' },
   { label: 'Teachers', path: '/teachers' },
   { label: 'Classrooms', path: null },
