@@ -7,6 +7,8 @@ import Subjects from "../pages/Subjects/Subjects";
 import SubjectForm from "../pages/Subjects/SubjectForm";
 import Teachers from "../pages/Teachers/Teachers";
 import TeacherForm from "../pages/Teachers/TeacherForm";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
 
 function AppShell({ children }) {
     return (
@@ -26,12 +28,56 @@ function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/dashboard" element={<AppShell><Dashboard /></AppShell>} />
-            <Route path="/subjects" element={<AppShell><Subjects /></AppShell>} />
-            <Route path="/subjects/new" element={<AppShell><SubjectForm /></AppShell>} />
-            <Route path="/teachers" element={<AppShell><Teachers /></AppShell>} />
-            <Route path="/teachers/new" element={<AppShell><TeacherForm /></AppShell>} />
-            <Route path="/teachers/:id/edit" element={<AppShell><TeacherForm /></AppShell>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+                path="/dashboard"
+                element={
+                    <AppShell>
+                        <Dashboard />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/subjects"
+                element={
+                    <AppShell>
+                        <Subjects />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/subjects/new"
+                element={
+                    <AppShell>
+                        <SubjectForm />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/teachers"
+                element={
+                    <AppShell>
+                        <Teachers />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/teachers/new"
+                element={
+                    <AppShell>
+                        <TeacherForm />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/teachers/:id/edit"
+                element={
+                    <AppShell>
+                        <TeacherForm />
+                    </AppShell>
+                }
+            />
         </Routes>
     );
 }
