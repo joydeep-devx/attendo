@@ -5,6 +5,7 @@ import Reveal from "../../components/Reveal";
 import HowItWorks from "./HowItWorks";
 import ConflictChecks from "./ConflictChecks";
 import SquaresBackground from "../../components/SquaresBackground";
+import TextType from "../../components/TextType";
 
 const ROLES = [
     {
@@ -77,8 +78,7 @@ function Landing() {
                                 Timetable · Attendance · Insight
                             </p>
                             <h1 className="mt-4 font-display text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-                                Timetables that build themselves and hold
-                                together
+                                <TextType text="Timetables that build themselves and hold together" />
                             </h1>
                             <p className="mt-5 max-w-md text-slate">
                                 Attendo generates a full weekly schedule across
