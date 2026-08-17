@@ -1,0 +1,5 @@
+# Data-processing and timetable-candidate training requirements.
+
+pandas
+numpy
+scikit-learn

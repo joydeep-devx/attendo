@@ -1,0 +1,560 @@
+{
+  "metadata": {
+    "status": "processed",
+    "subject_count": 7,
+    "teacher_qualification_count": 15
+  },
+  "subjects": [
+    {
+      "subject_id": "PCC-CS501",
+      "subject_name": "Core Subject 1",
+      "subject_type": "theory",
+      "weekly_periods": 4,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "PCC-CS502",
+      "subject_name": "Core Subject 2",
+      "subject_type": "theory",
+      "weekly_periods": 4,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "PCC-CS503",
+      "subject_name": "Core Subject 3",
+      "subject_type": "theory",
+      "weekly_periods": 4,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "HSMC501",
+      "subject_name": "HSMC",
+      "subject_type": "theory",
+      "weekly_periods": 3,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "PEC-IT501B",
+      "subject_name": "Program Elective",
+      "subject_type": "theory",
+      "weekly_periods": 3,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "PCC-CS592",
+      "subject_name": "Core Lab 1",
+      "subject_type": "lab",
+      "weekly_periods": 3,
+      "consecutive_periods": 2,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "PCC-CS593",
+      "subject_name": "Core Lab 2",
+      "subject_type": "lab",
+      "weekly_periods": 2,
+      "consecutive_periods": 2,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    }
+  ],
+  "teacher_qualifications": [
+    {
+      "teacher_id": "T001",
+      "teacher_code": "SBR",
+      "teacher_name": "Test Teacher A",
+      "subject_id": "PCC-CS501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T001",
+      "teacher_code": "SBR",
+      "teacher_name": "Test Teacher A",
+      "subject_id": "PCC-CS503",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T002",
+      "teacher_code": "PD",
+      "teacher_name": "Test Teacher B",
+      "subject_id": "PCC-CS501",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T002",
+      "teacher_code": "PD",
+      "teacher_name": "Test Teacher B",
+      "subject_id": "PCC-CS503",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T002",
+      "teacher_code": "PD",
+      "teacher_name": "Test Teacher B",
+      "subject_id": "PCC-CS592",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T003",
+      "teacher_code": "AP",
+      "teacher_name": "Test Teacher C",
+      "subject_id": "PCC-CS502",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T003",
+      "teacher_code": "AP",
+      "teacher_name": "Test Teacher C",
+      "subject_id": "PCC-CS592",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T004",
+      "teacher_code": "SH",
+      "teacher_name": "Test Teacher D",
+      "subject_id": "PCC-CS502",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T004",
+      "teacher_code": "SH",
+      "teacher_name": "Test Teacher D",
+      "subject_id": "PCC-CS503",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T004",
+      "teacher_code": "SH",
+      "teacher_name": "Test Teacher D",
+      "subject_id": "PCC-CS593",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T005",
+      "teacher_code": "NF(MM)",
+      "teacher_name": "Test Teacher E",
+      "subject_id": "HSMC501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 1,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T006",
+      "teacher_code": "BBH",
+      "teacher_name": "Test Teacher F",
+      "subject_id": "HSMC501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T006",
+      "teacher_code": "BBH",
+      "teacher_name": "Test Teacher F",
+      "subject_id": "PEC-IT501B",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T007",
+      "teacher_code": "OS",
+      "teacher_name": "Test Teacher G",
+      "subject_id": "PEC-IT501B",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 1,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T008",
+      "teacher_code": "AM",
+      "teacher_name": "Test Teacher H",
+      "subject_id": "PCC-CS593",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 1,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    }
+  ],
+  "schedule": [
+    {
+      "working_days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "start_time": "09:45",
+      "end_time": "16:30",
+      "period_duration_minutes": 60,
+      "break_start": "12:45",
+      "break_end": "13:30",
+      "break_duration_minutes": 45
+    }
+  ],
+  "time_slots": [
+    {
+      "day": "Monday",
+      "slot_id": "S1",
+      "start_time": "09:45",
+      "end_time": "10:45",
+      "is_break": false
+    },
+    {
+      "day": "Monday",
+      "slot_id": "S2",
+      "start_time": "10:45",
+      "end_time": "11:45",
+      "is_break": false
+    },
+    {
+      "day": "Monday",
+      "slot_id": "S3",
+      "start_time": "11:45",
+      "end_time": "12:45",
+      "is_break": false
+    },
+    {
+      "day": "Monday",
+      "slot_id": "BREAK",
+      "start_time": "12:45",
+      "end_time": "13:30",
+      "is_break": true
+    },
+    {
+      "day": "Monday",
+      "slot_id": "S4",
+      "start_time": "13:30",
+      "end_time": "14:30",
+      "is_break": false
+    },
+    {
+      "day": "Monday",
+      "slot_id": "S5",
+      "start_time": "14:30",
+      "end_time": "15:30",
+      "is_break": false
+    },
+    {
+      "day": "Monday",
+      "slot_id": "S6",
+      "start_time": "15:30",
+      "end_time": "16:30",
+      "is_break": false
+    },
+    {
+      "day": "Tuesday",
+      "slot_id": "S1",
+      "start_time": "09:45",
+      "end_time": "10:45",
+      "is_break": false
+    },
+    {
+      "day": "Tuesday",
+      "slot_id": "S2",
+      "start_time": "10:45",
+      "end_time": "11:45",
+      "is_break": false
+    },
+    {
+      "day": "Tuesday",
+      "slot_id": "S3",
+      "start_time": "11:45",
+      "end_time": "12:45",
+      "is_break": false
+    },
+    {
+      "day": "Tuesday",
+      "slot_id": "BREAK",
+      "start_time": "12:45",
+      "end_time": "13:30",
+      "is_break": true
+    },
+    {
+      "day": "Tuesday",
+      "slot_id": "S4",
+      "start_time": "13:30",
+      "end_time": "14:30",
+      "is_break": false
+    },
+    {
+      "day": "Tuesday",
+      "slot_id": "S5",
+      "start_time": "14:30",
+      "end_time": "15:30",
+      "is_break": false
+    },
+    {
+      "day": "Tuesday",
+      "slot_id": "S6",
+      "start_time": "15:30",
+      "end_time": "16:30",
+      "is_break": false
+    },
+    {
+      "day": "Wednesday",
+      "slot_id": "S1",
+      "start_time": "09:45",
+      "end_time": "10:45",
+      "is_break": false
+    },
+    {
+      "day": "Wednesday",
+      "slot_id": "S2",
+      "start_time": "10:45",
+      "end_time": "11:45",
+      "is_break": false
+    },
+    {
+      "day": "Wednesday",
+      "slot_id": "S3",
+      "start_time": "11:45",
+      "end_time": "12:45",
+      "is_break": false
+    },
+    {
+      "day": "Wednesday",
+      "slot_id": "BREAK",
+      "start_time": "12:45",
+      "end_time": "13:30",
+      "is_break": true
+    },
+    {
+      "day": "Wednesday",
+      "slot_id": "S4",
+      "start_time": "13:30",
+      "end_time": "14:30",
+      "is_break": false
+    },
+    {
+      "day": "Wednesday",
+      "slot_id": "S5",
+      "start_time": "14:30",
+      "end_time": "15:30",
+      "is_break": false
+    },
+    {
+      "day": "Wednesday",
+      "slot_id": "S6",
+      "start_time": "15:30",
+      "end_time": "16:30",
+      "is_break": false
+    },
+    {
+      "day": "Thursday",
+      "slot_id": "S1",
+      "start_time": "09:45",
+      "end_time": "10:45",
+      "is_break": false
+    },
+    {
+      "day": "Thursday",
+      "slot_id": "S2",
+      "start_time": "10:45",
+      "end_time": "11:45",
+      "is_break": false
+    },
+    {
+      "day": "Thursday",
+      "slot_id": "S3",
+      "start_time": "11:45",
+      "end_time": "12:45",
+      "is_break": false
+    },
+    {
+      "day": "Thursday",
+      "slot_id": "BREAK",
+      "start_time": "12:45",
+      "end_time": "13:30",
+      "is_break": true
+    },
+    {
+      "day": "Thursday",
+      "slot_id": "S4",
+      "start_time": "13:30",
+      "end_time": "14:30",
+      "is_break": false
+    },
+    {
+      "day": "Thursday",
+      "slot_id": "S5",
+      "start_time": "14:30",
+      "end_time": "15:30",
+      "is_break": false
+    },
+    {
+      "day": "Thursday",
+      "slot_id": "S6",
+      "start_time": "15:30",
+      "end_time": "16:30",
+      "is_break": false
+    },
+    {
+      "day": "Friday",
+      "slot_id": "S1",
+      "start_time": "09:45",
+      "end_time": "10:45",
+      "is_break": false
+    },
+    {
+      "day": "Friday",
+      "slot_id": "S2",
+      "start_time": "10:45",
+      "end_time": "11:45",
+      "is_break": false
+    },
+    {
+      "day": "Friday",
+      "slot_id": "S3",
+      "start_time": "11:45",
+      "end_time": "12:45",
+      "is_break": false
+    },
+    {
+      "day": "Friday",
+      "slot_id": "BREAK",
+      "start_time": "12:45",
+      "end_time": "13:30",
+      "is_break": true
+    },
+    {
+      "day": "Friday",
+      "slot_id": "S4",
+      "start_time": "13:30",
+      "end_time": "14:30",
+      "is_break": false
+    },
+    {
+      "day": "Friday",
+      "slot_id": "S5",
+      "start_time": "14:30",
+      "end_time": "15:30",
+      "is_break": false
+    },
+    {
+      "day": "Friday",
+      "slot_id": "S6",
+      "start_time": "15:30",
+      "end_time": "16:30",
+      "is_break": false
+    },
+    {
+      "day": "Saturday",
+      "slot_id": "S1",
+      "start_time": "09:45",
+      "end_time": "10:45",
+      "is_break": false
+    },
+    {
+      "day": "Saturday",
+      "slot_id": "S2",
+      "start_time": "10:45",
+      "end_time": "11:45",
+      "is_break": false
+    },
+    {
+      "day": "Saturday",
+      "slot_id": "S3",
+      "start_time": "11:45",
+      "end_time": "12:45",
+      "is_break": false
+    },
+    {
+      "day": "Saturday",
+      "slot_id": "BREAK",
+      "start_time": "12:45",
+      "end_time": "13:30",
+      "is_break": true
+    },
+    {
+      "day": "Saturday",
+      "slot_id": "S4",
+      "start_time": "13:30",
+      "end_time": "14:30",
+      "is_break": false
+    },
+    {
+      "day": "Saturday",
+      "slot_id": "S5",
+      "start_time": "14:30",
+      "end_time": "15:30",
+      "is_break": false
+    },
+    {
+      "day": "Saturday",
+      "slot_id": "S6",
+      "start_time": "15:30",
+      "end_time": "16:30",
+      "is_break": false
+    }
+  ]
+}

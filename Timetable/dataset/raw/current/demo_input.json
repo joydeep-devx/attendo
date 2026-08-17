@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "dataset_type": "current_user_input",
+    "academic_year": 2026,
+    "semester": 5,
+    "discipline": "CSE",
+    "section": "CSE2",
+    "note": "Teacher names below are RANDOM PLACEHOLDER TEST DATA, not real faculty names."
+  },
+  "schedule": {
+    "working_days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+    ],
+    "start_time": "09:45",
+    "end_time": "16:30",
+    "period_duration_minutes": 60,
+    "break": {
+      "start": "12:45",
+      "end": "13:30",
+      "duration_minutes": 45
+    }
+  },
+  "subjects": [
+    {
+      "subject_id": "PCC-CS501",
+      "name": "Core Subject 1",
+      "type": "theory",
+      "weekly_periods": 4
+    },
+    {
+      "subject_id": "PCC-CS502",
+      "name": "Core Subject 2",
+      "type": "theory",
+      "weekly_periods": 4
+    },
+    {
+      "subject_id": "PCC-CS503",
+      "name": "Core Subject 3",
+      "type": "theory",
+      "weekly_periods": 4
+    },
+    {
+      "subject_id": "HSMC501",
+      "name": "HSMC",
+      "type": "theory",
+      "weekly_periods": 3
+    },
+    {
+      "subject_id": "PEC-IT501B",
+      "name": "Program Elective",
+      "type": "theory",
+      "weekly_periods": 3
+    },
+    {
+      "subject_id": "PCC-CS592",
+      "name": "Core Lab 1",
+      "type": "lab",
+      "weekly_periods": 3,
+      "consecutive_periods": 2
+    },
+    {
+      "subject_id": "PCC-CS593",
+      "name": "Core Lab 2",
+      "type": "lab",
+      "weekly_periods": 2,
+      "consecutive_periods": 2
+    }
+  ],
+  "teachers": [
+    {
+      "teacher_id": "T001",
+      "teacher_code": "SBR",
+      "name": "Test Teacher A",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "PCC-CS501",
+        "PCC-CS503"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T002",
+      "teacher_code": "PD",
+      "name": "Test Teacher B",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS501",
+        "PCC-CS503",
+        "PCC-CS592"
+      ],
+      "max_subjects": 3
+    },
+    {
+      "teacher_id": "T003",
+      "teacher_code": "AP",
+      "name": "Test Teacher C",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS502",
+        "PCC-CS592"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T004",
+      "teacher_code": "SH",
+      "name": "Test Teacher D",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS502",
+        "PCC-CS503",
+        "PCC-CS593"
+      ],
+      "max_subjects": 3
+    },
+    {
+      "teacher_id": "T005",
+      "teacher_code": "NF(MM)",
+      "name": "Test Teacher E",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "HSMC501"
+      ],
+      "max_subjects": 1
+    },
+    {
+      "teacher_id": "T006",
+      "teacher_code": "BBH",
+      "name": "Test Teacher F",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "HSMC501",
+        "PEC-IT501B"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T007",
+      "teacher_code": "OS",
+      "name": "Test Teacher G",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "PEC-IT501B"
+      ],
+      "max_subjects": 1
+    },
+    {
+      "teacher_id": "T008",
+      "teacher_code": "AM",
+      "name": "Test Teacher H",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS593"
+      ],
+      "max_subjects": 1
+    }
+  ],
+  "rules": {
+    "same_section_same_theory_subject_one_teacher": true,
+    "different_sections_can_have_different_teachers": true,
+    "same_teacher_can_teach_multiple_sections": true,
+    "lab_teacher_can_be_different_from_theory_teacher": true,
+    "teacher_cannot_teach_two_classes_at_same_time": true,
+    "teacher_must_be_qualified_for_subject": true,
+    "lab_teacher_must_have_lab_permission": true,
+    "lab_must_be_consecutive": true,
+    "no_class_during_break": true
+  }
+}

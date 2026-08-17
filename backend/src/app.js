@@ -1,0 +1,31 @@
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const studentRouter = require("./routes/student.routes");
+const subjectRouter = require("./routes/subject.routes");
+const attendanceRouter = require("./routes/attendance.routes");
+const timetableRouter = require("./routes/timetable.routes");
+const timeSlotRouter = require("./routes/timeSlot.routes");
+const teacherRouter = require("./routes/teacher.routes");
+const teacherSubjectRouter = require("./routes/teacherSubject.routes");
+const scheduleConfigRouter = require("./routes/scheduleConfig.routes.js");
+const classroomRouter = require("./routes/classroom.routes");
+const authRouter = require("./routes/auth.routes");
+
+const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.use("/api/auth", authRouter);
+app.use("/api/students", studentRouter);
+app.use("/api/subjects", subjectRouter);
+app.use("/api/attendance", attendanceRouter);
+app.use("/api/timetable", timetableRouter);
+app.use("/api/time-slots", timeSlotRouter);
+app.use("/api/teachers", teacherRouter);
+app.use("/api/teacher-subjects", teacherSubjectRouter);
+app.use("/api/schedule-config", scheduleConfigRouter);
+app.use("/api/classrooms", classroomRouter);
+
+
+module.exports = app;

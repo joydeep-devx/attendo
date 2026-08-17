@@ -1,0 +1,22 @@
+{
+  "purpose": "Binary training data for ranking timetable placement candidates.",
+  "feature_names": [
+    "day_encoded",
+    "start_hour",
+    "duration_hours",
+    "is_lab",
+    "is_theory",
+    "is_remedial"
+  ],
+  "label_name": "historical_placement_selected",
+  "label_encoding": {
+    "0": "unseen-day alternative candidate",
+    "1": "historical placement"
+  },
+  "shape": {
+    "rows": 96,
+    "columns": 6
+  },
+  "source": "C:\\Users\\mohit\\OneDrive\\Desktop\\scheduler2\\Timetable\\dataset\\processed\\historical_processed.json",
+  "warning": "Current sample history contains only Thursday records; add full multi-day history before relying on model predictions."
+}
