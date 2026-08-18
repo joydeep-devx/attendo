@@ -62,7 +62,12 @@ function Register() {
     async function handleFaceComplete(images) {
         setStatus("submitting");
         try {
-            await enrollFace(images);
+            await enrollFace({
+                images,
+                username: formData.username,
+                password: formData.password,
+                studentId: formData.studentRollNo,
+            });
             navigate("/login");
         } catch (error) {
             setErrorMessage(error.message);
