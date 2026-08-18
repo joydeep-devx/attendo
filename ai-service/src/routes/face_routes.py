@@ -81,7 +81,43 @@ async def create_embedding(
 
     return result
 
+@router.post("/embeddings/batch")
+async def create_embeddings_batch(
+    images: List[UploadFile] = File(
+        ...,
+        description="Several image files, e.g. 5 snapshots captured client-side."
+    )
+):
+    results = []
 
+    for index, image in enumerate(images):
+        try:
+            image_bytes = await image.read()
+            rgb_image = bytes_to_rgb_image(image_bytes)
+        except ValueError as val_err:
+            results.append({"index": index, "filename": image.filename,
+                             "success": False, "face_detected": False,
+                             "face_count": 0, "faces": [], "message": str(val_err)})
+            continue
+        except Exception:
+            results.append({"index": index, "filename": image.filename,
+                             "success": False, "face_detected": False,
+                             "face_count": 0, "faces": [],
+                             "message": "Failed to read or decode uploaded image file."})
+            continue
+
+        try:
+            embedding_result = get_face_embeddings(rgb_image)
+        except Exception as exc:
+            results.append({"index": index, "filename": image.filename,
+                             "success": False, "face_detected": False,
+                             "face_count": 0, "faces": [],
+                             "message": f"Face recognition error: {str(exc)}"})
+            continue
+
+        results.append({"index": index, "filename": image.filename, **embedding_result})
+
+    return {"count": len(images), "results": results}
 
 # ----------------------------------------------------------------
 # 2. POST /face/match
@@ -127,4 +163,4 @@ async def match_face(data: MatchRequest):
     return {
         "success": True,
         **result
-    }
+    }

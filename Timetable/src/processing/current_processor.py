@@ -43,13 +43,13 @@ def subjects_to_dataframe(payload: dict[str, Any]) -> pd.DataFrame: # yeh datafr
     if df.empty:
         return pd.DataFrame(columns=columns)
 
-    for column in ("subject_id", "subject_name", "subject_type", "weekly_periods", "consecutive_periods"):
+    for column in columns:
         if column not in df:
             df[column] = pd.NA
     df["subject_id"] = df["subject_id"].astype("string").str.strip()
     df["subject_name"] = df["subject_name"].astype("string").str.strip()
     df["subject_type"] = df["subject_type"].astype("string").str.lower().str.strip()
-    df["weekly_periods"] = pd.to_numeric(df["weekly_periods"], errors="coerce").astype("Int64")
+    df["weekly_periods"] = pd.to_numeric(df["weekly_periods"], errors="coerce").astype("Int64") #errors coerce ka mtl
     df["consecutive_periods"] = pd.to_numeric(df["consecutive_periods"], errors="coerce").astype("Int64")
     df["missing_subject_id"] = df["subject_id"].isna() | df["subject_id"].eq("")
     df["invalid_weekly_periods"] = df["weekly_periods"].isna() | df["weekly_periods"].le(0)
@@ -66,8 +66,8 @@ def teachers_to_dataframe(payload: dict[str, Any]) -> pd.DataFrame:
         if column not in df:
             df[column] = pd.NA
     df["subjects"] = df["subjects"].apply(lambda value: value if isinstance(value, list) and value else [pd.NA])
-    df = df.explode("subjects", ignore_index=True).rename(columns={"subjects": "subject_id"})
-    for column in ("teacher_id", "teacher_code", "teacher_name", "subject_id"):
+    df = df.explode("subjects", ignore_index=True).rename(columns={"subjects": "subject_id"}) #agar subject mai ek se zyada
+    for column in ("teacher_id", "teacher_code", "teacher_name", "subject_id"): #agar column me string type ka data nahi hai to usko string me convert kar do aur strip kar do
         df[column] = df[column].astype("string").str.strip()
     df["max_subjects"] = pd.to_numeric(df["max_subjects"], errors="coerce").astype("Int64")
     df["missing_teacher_id"] = df["teacher_id"].isna() | df["teacher_id"].eq("")

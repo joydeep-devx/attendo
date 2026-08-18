@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 
 const DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI']
 const PERIODS = ['09:00', '10:00', '11:00', '12:00']
@@ -22,9 +22,37 @@ const STATUS = [
   { label: 'Resolved', text: 'Moved to THU 09:00 — no clashes remain', tone: 'text-present' },
 ]
 
+function RobotHand({ grip }) {
+  return (
+    <svg viewBox="0 0 40 34" className="h-8 w-8 overflow-visible drop-shadow-sm">
+      <rect x="16" y="0" width="8" height="8" rx="2" className="fill-slate-soft" />
+      <rect x="10" y="7" width="20" height="9" rx="4" className="fill-indigo-dark" />
+      <motion.rect
+        y="15"
+        width="5"
+        height="16"
+        rx="2.5"
+        className="fill-indigo-dark"
+        animate={{ x: grip ? 13 : 6 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 22 }}
+      />
+      <motion.rect
+        y="15"
+        width="5"
+        height="16"
+        rx="2.5"
+        className="fill-indigo-dark"
+        animate={{ x: grip ? 22 : 29 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 22 }}
+      />
+    </svg>
+  )
+}
+
 function TimetablePreview() {
   const [phase, setPhase] = useState(0)
   const [cycle, setCycle] = useState(0)
+  const [hand, setHand] = useState({ visible: false, grip: false })
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
@@ -39,6 +67,15 @@ function TimetablePreview() {
         setPhase(0)
         setCycle((c) => c + 1)
       }, 8000),
+      // hand reaches in and opens above the clashing card
+      setTimeout(() => setHand({ visible: true, grip: false }), 3100),
+      // hand closes — grabs the card just before the move
+      setTimeout(() => setHand((h) => ({ ...h, grip: true })), 3500),
+      // phase flips to 2 at 4400, card+hand travel together (layout animation)
+      // hand releases once it has arrived at the resolved slot
+      setTimeout(() => setHand((h) => ({ ...h, grip: false })), 5000),
+      // hand lifts off and fades out
+      setTimeout(() => setHand({ visible: false, grip: false }), 5450),
     ]
     return () => timers.forEach(clearTimeout)
   }, [cycle, reduceMotion])
@@ -127,6 +164,28 @@ function TimetablePreview() {
             <span className="text-[10px] text-slate">{phase === 1 ? 'clash' : 'R-204'}</span>
           </motion.div>
         )}
+
+        <AnimatePresence>
+          {!reduceMotion && hand.visible && (
+            <motion.div
+              key={`hand-${cycle}`}
+              layout
+              initial={{ opacity: 0, y: -34, scale: 0.85 }}
+              animate={{ opacity: 1, y: hand.grip ? -16 : -26, scale: hand.grip ? 0.96 : 1 }}
+              exit={{ opacity: 0, y: -34 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+              style={{
+                gridColumn: conflict.day + 2,
+                gridRow: conflict.period + 2,
+                zIndex: 20,
+                pointerEvents: 'none',
+              }}
+              className="flex items-start justify-center"
+            >
+              <RobotHand grip={hand.grip} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <div className="mt-4 flex items-center gap-3 border-t border-line pt-3">
