@@ -11,7 +11,7 @@ function AuthLayout({ title, subtitle, children, footer }) {
                         to="/"
                         className="font-display text-lg font-semibold tracking-tight text-ink"
                     >
-                        Attendo
+                        Scheduler.ai
                     </Link>
                     <Link
                         to="/"
