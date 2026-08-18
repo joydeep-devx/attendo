@@ -9,18 +9,22 @@ import Teachers from "../pages/Teachers/Teachers";
 import TeacherForm from "../pages/Teachers/TeacherForm";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import ProtectedRoute from "../components/ProtectedRoute";
 
-function AppShell({ children }) {
+
+function AppShell({ children, allowedRoles }) {
     return (
-        <MainLayout>
-            <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
-            >
-                {children}
-            </motion.div>
-        </MainLayout>
+        <ProtectedRoute allowedRoles={allowedRoles}>
+            <MainLayout>
+                <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    {children}
+                </motion.div>
+            </MainLayout>
+        </ProtectedRoute>
     );
 }
 
@@ -38,10 +42,11 @@ function AppRoutes() {
                     </AppShell>
                 }
             />
+
             <Route
                 path="/subjects"
                 element={
-                    <AppShell>
+                    <AppShell allowedRoles={["ADMIN"]}>
                         <Subjects />
                     </AppShell>
                 }
@@ -49,7 +54,7 @@ function AppRoutes() {
             <Route
                 path="/subjects/new"
                 element={
-                    <AppShell>
+                    <AppShell allowedRoles={["ADMIN"]}>
                         <SubjectForm />
                     </AppShell>
                 }
@@ -57,7 +62,7 @@ function AppRoutes() {
             <Route
                 path="/teachers"
                 element={
-                    <AppShell>
+                    <AppShell allowedRoles={["ADMIN"]}>
                         <Teachers />
                     </AppShell>
                 }
@@ -65,7 +70,7 @@ function AppRoutes() {
             <Route
                 path="/teachers/new"
                 element={
-                    <AppShell>
+                    <AppShell allowedRoles={["ADMIN"]}>
                         <TeacherForm />
                     </AppShell>
                 }
@@ -73,7 +78,7 @@ function AppRoutes() {
             <Route
                 path="/teachers/:id/edit"
                 element={
-                    <AppShell>
+                    <AppShell allowedRoles={["ADMIN"]}>
                         <TeacherForm />
                     </AppShell>
                 }

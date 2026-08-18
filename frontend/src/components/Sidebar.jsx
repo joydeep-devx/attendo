@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink , useNavigate} from 'react-router-dom'
 import {
   LayoutDashboard,
   BookOpen,
@@ -9,17 +9,20 @@ import {
   CalendarDays,
   ClipboardCheck,
   PanelLeftClose,
+  LogOut,
 } from 'lucide-react'
 
+import { useAuth } from '../context/AuthContext'
+
 const NAV_ITEMS = [
-  { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-  { label: 'Subjects', path: '/subjects', icon: BookOpen },
-  { label: 'Teachers', path: '/teachers', icon: Users },
-  { label: 'Classrooms', path: null, icon: DoorOpen },
-  { label: 'Time Slots', path: null, icon: Clock },
-  { label: 'Schedule Configuration', path: null, icon: SlidersHorizontal },
-  { label: 'Timetable', path: null, icon: CalendarDays },
-  { label: 'Attendance', path: null, icon: ClipboardCheck },
+  { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, roles: ['ADMIN', 'TEACHER', 'STUDENT'] },
+  { label: 'Subjects', path: '/subjects', icon: BookOpen, roles: ['ADMIN'] },
+  { label: 'Teachers', path: '/teachers', icon: Users, roles: ['ADMIN'] },
+  { label: 'Classrooms', path: null, icon: DoorOpen, roles: ['ADMIN'] },
+  { label: 'Time Slots', path: null, icon: Clock, roles: ['ADMIN'] },
+  { label: 'Schedule Configuration', path: null, icon: SlidersHorizontal, roles: ['ADMIN'] },
+  { label: 'Timetable', path: null, icon: CalendarDays, roles: ['ADMIN', 'TEACHER', 'STUDENT'] },
+  { label: 'Attendance', path: null, icon: ClipboardCheck, roles: ['ADMIN', 'TEACHER', 'STUDENT'] },
 ]
 
 const rowBase =
@@ -34,6 +37,15 @@ function label(isCollapsed) {
 }
 
 function Sidebar({ isCollapsed, isMobileOpen, onCloseMobile, onToggleCollapse }) {
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
+
+  const visibleItems = NAV_ITEMS.filter((item) => item.roles.includes(user?.role))
+
+  async function handleLogout() {
+    await logout()
+    navigate('/login')
+  }
   return (
     <>
       {isMobileOpen && (
@@ -60,8 +72,10 @@ function Sidebar({ isCollapsed, isMobileOpen, onCloseMobile, onToggleCollapse })
           </span>
         </div>
 
+
+
         <nav className="flex flex-1 flex-col gap-1">
-          {NAV_ITEMS.map((item) => {
+          {visibleItems.map((item) => {
             const Icon = item.icon
 
             if (!item.path) {
@@ -103,20 +117,48 @@ function Sidebar({ isCollapsed, isMobileOpen, onCloseMobile, onToggleCollapse })
           })}
         </nav>
 
-        <button
-          type="button"
-          onClick={onToggleCollapse}
-          title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          className={`${rowBase} hidden text-slate hover:bg-line-soft hover:text-ink lg:flex`}
-        >
-          <span className={iconBox}>
-            <PanelLeftClose
-              size={20}
-              className={`transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''}`}
-            />
-          </span>
-          <span className={label(isCollapsed)}>Collapse</span>
-        </button>
+        <div className="mt-auto flex flex-col gap-1 border-t border-line pt-2">
+          <div className={rowBase}>
+            <span className={iconBox}>
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-indigo-soft font-mono text-xs font-medium text-indigo">
+                {user?.username?.slice(0, 2).toUpperCase() || '··'}
+              </span>
+            </span>
+            <span className={`${label(isCollapsed)} flex flex-col`}>
+              <span className="text-sm text-ink">{user?.username}</span>
+              <span className="font-mono text-[10px] uppercase tracking-wide text-slate-soft">
+                {user?.role}
+              </span>
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleLogout}
+            title={isCollapsed ? 'Sign out' : undefined}
+            className={`${rowBase} text-slate hover:bg-absent-soft hover:text-absent`}
+          >
+            <span className={iconBox}>
+              <LogOut size={20} />
+            </span>
+            <span className={label(isCollapsed)}>Sign out</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={onToggleCollapse}
+            title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            className={`${rowBase} hidden text-slate hover:bg-line-soft hover:text-ink lg:flex`}
+          >
+            <span className={iconBox}>
+              <PanelLeftClose
+                size={20}
+                className={`transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''}`}
+              />
+            </span>
+            <span className={label(isCollapsed)}>Collapse</span>
+          </button>
+        </div>
       </aside>
     </>
   )
