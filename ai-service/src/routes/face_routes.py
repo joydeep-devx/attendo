@@ -1,7 +1,8 @@
 # pyrefly: ignore [missing-import]
-from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi import APIRouter, UploadFile, File, HTTPException, Form
 from pydantic import BaseModel, Field
 from typing import List, Optional
+import numpy as np
 
 from src.utils.image_utils import bytes_to_rgb_image
 from src.face.recognizer import get_face_embeddings
@@ -12,6 +13,42 @@ router = APIRouter(
     prefix="/face",
     tags=["Face Recognition"]
 )
+
+
+def _build_database_ready_embedding(embeddings: List[List[float]]) -> dict:
+    """
+    Build a stable enrollment embedding from multiple captures.
+
+    Strategy:
+    1) Compute centroid of all valid embeddings.
+    2) Rank samples by distance to centroid.
+    3) Keep closest N samples (N=3 for 5 inputs) to reduce outlier effect.
+    4) Average kept samples to get final database-ready embedding.
+    """
+
+    emb_np = np.array(embeddings, dtype=np.float64)
+    centroid = emb_np.mean(axis=0)
+    distances = np.linalg.norm(emb_np - centroid, axis=1)
+
+    keep_count = max(1, min(3, len(embeddings)))
+    keep_indices = np.argsort(distances)[:keep_count]
+    kept = emb_np[keep_indices]
+    final_embedding = kept.mean(axis=0)
+
+    return {
+        "embedding": final_embedding.tolist(),
+        "dimensions": int(final_embedding.shape[0]),
+        "aggregation": {
+            "method": "mean_of_closest_to_centroid",
+            "input_count": len(embeddings),
+            "kept_count": int(keep_count),
+            "kept_indices": [int(i) for i in keep_indices.tolist()],
+            "distances_to_centroid": [round(float(d), 6) for d in distances.tolist()],
+            "max_distance": round(float(np.max(distances)), 6),
+            "min_distance": round(float(np.min(distances)), 6),
+            "mean_distance": round(float(np.mean(distances)), 6)
+        }
+    }
 
 
 # ----------------------------------------------------------------
@@ -118,6 +155,147 @@ async def create_embeddings_batch(
         results.append({"index": index, "filename": image.filename, **embedding_result})
 
     return {"count": len(images), "results": results}
+
+
+@router.post("/embedding/enroll")
+async def create_enrollment_embedding(
+    student_id: Optional[str] = Form(
+        None,
+        description="Optional student identifier from frontend."
+    ),
+    images: List[UploadFile] = File(
+        ...,
+        description="Exactly 5 face images of the same person."
+    )
+):
+    """
+    Accept exactly 5 images and return one robust embedding for DB storage.
+
+    Rules:
+    - Exactly 5 images are required.
+    - Each image must contain exactly 1 face.
+    - Images with 0 or multiple faces are rejected.
+    """
+
+    if len(images) != 5:
+        raise HTTPException(
+            status_code=422,
+            detail="Exactly 5 images are required for enrollment."
+        )
+
+    valid_embeddings: List[List[float]] = []
+    sample_results = []
+
+    for index, image in enumerate(images):
+        try:
+            image_bytes = await image.read()
+            rgb_image = bytes_to_rgb_image(image_bytes)
+        except ValueError as val_err:
+            sample_results.append({
+                "index": index,
+                "filename": image.filename,
+                "accepted": False,
+                "message": str(val_err)
+            })
+            continue
+        except Exception:
+            sample_results.append({
+                "index": index,
+                "filename": image.filename,
+                "accepted": False,
+                "message": "Failed to read or decode uploaded image file."
+            })
+            continue
+
+        try:
+            result = get_face_embeddings(rgb_image)
+        except Exception as exc:
+            sample_results.append({
+                "index": index,
+                "filename": image.filename,
+                "accepted": False,
+                "message": f"Face recognition error: {str(exc)}"
+            })
+            continue
+
+        if not result.get("success"):
+            sample_results.append({
+                "index": index,
+                "filename": image.filename,
+                "accepted": False,
+                "message": result.get("message", "No face detected")
+            })
+            continue
+
+        face_count = int(result.get("face_count", 0))
+        if face_count != 1:
+            sample_results.append({
+                "index": index,
+                "filename": image.filename,
+                "accepted": False,
+                "message": f"Expected exactly 1 face, got {face_count}."
+            })
+            continue
+
+        embedding = result["faces"][0]["embedding"]
+        valid_embeddings.append(embedding)
+        sample_results.append({
+            "index": index,
+            "filename": image.filename,
+            "accepted": True,
+            "message": "Accepted"
+        })
+
+    if len(valid_embeddings) < 3:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "At least 3 valid single-face images are required to build a reliable enrollment embedding.",
+                "valid_count": len(valid_embeddings),
+                "required_minimum": 3,
+                "samples": sample_results
+            }
+        )
+
+    aggregate = _build_database_ready_embedding(valid_embeddings)
+
+    return {
+        "success": True,
+        "student_id": student_id,
+        "valid_samples": len(valid_embeddings),
+        "requested_samples": len(images),
+        "samples": sample_results,
+        "database_record": {
+            "student_id": student_id,
+            "embedding": aggregate["embedding"],
+            "dimensions": aggregate["dimensions"],
+            "metadata": aggregate["aggregation"]
+        }
+    }
+
+
+@router.post("/embedding/enroll-five-fields")
+async def create_enrollment_embedding_five_fields(
+    student_id: Optional[str] = Form(
+        None,
+        description="Optional student identifier from frontend."
+    ),
+    image1: UploadFile = File(..., description="Face image 1"),
+    image2: UploadFile = File(..., description="Face image 2"),
+    image3: UploadFile = File(..., description="Face image 3"),
+    image4: UploadFile = File(..., description="Face image 4"),
+    image5: UploadFile = File(..., description="Face image 5")
+):
+    """
+    Alternate enrollment endpoint with separate file inputs.
+
+    This is useful in Swagger UI where array file upload can be confusing.
+    """
+
+    return await create_enrollment_embedding(
+        student_id=student_id,
+        images=[image1, image2, image3, image4, image5]
+    )
 
 # ----------------------------------------------------------------
 # 2. POST /face/match
