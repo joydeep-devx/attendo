@@ -10,7 +10,7 @@ import TeacherForm from "../pages/Teachers/TeacherForm";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import ProtectedRoute from "../components/ProtectedRoute";
-
+import TimeSlots from "../pages/TimeSlots/TimeSlots";
 
 function AppShell({ children, allowedRoles }) {
     return (
@@ -80,6 +80,15 @@ function AppRoutes() {
                 element={
                     <AppShell allowedRoles={["ADMIN"]}>
                         <TeacherForm />
+                    </AppShell>
+                }
+            />
+
+            <Route
+                path="/time-slots"
+                element={
+                    <AppShell allowedRoles={["ADMIN"]}>
+                        <TimeSlots />
                     </AppShell>
                 }
             />
