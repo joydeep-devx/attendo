@@ -1,20 +1,33 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate} from 'react-router-dom'
 import AuthLayout from './AuthLayout'
 import Field from '../../components/Field'
+import { useAuth } from '../../context/AuthContext'
 
 function Login() {
-  const [formData, setFormData] = useState({ email: '', password: '' })
-  const [notice, setNotice] = useState('')
+  const [formData, setFormData] = useState({ username: '', password: '' })
+  const [status, setStatus] = useState('idle')
+  const [errorMessage, setErrorMessage] = useState('')
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
   function handleChange(event) {
     const { name, value } = event.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    setNotice('Authentication is not connected yet. Use "Explore the app" from the home page for now.')
+    setStatus('submitting')
+    setErrorMessage('')
+
+    try {
+      await login(formData.username, formData.password)
+      navigate('/dashboard')
+    } catch (error) {
+      setErrorMessage(error.message)
+      setStatus('idle')
+    }
   }
 
   return (
@@ -30,12 +43,12 @@ function Login() {
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <Field
-          label="Email"
-          name="email"
-          type="email"
-          value={formData.email}
+          label="Username"
+          name="username"
+          value={formData.username}
           onChange={handleChange}
-          placeholder="you@college.edu"
+          placeholder="your username"
+          minLength={4}
           required
         />
         <Field
@@ -45,18 +58,20 @@ function Login() {
           value={formData.password}
           onChange={handleChange}
           placeholder="••••••••"
+          minLength={6}
           required
         />
 
-        {notice && (
-          <p className="rounded-md bg-amber-soft px-3 py-2 text-sm text-amber">{notice}</p>
+        {errorMessage && (
+          <p className="rounded-md bg-absent-soft px-3 py-2 text-sm text-absent">{errorMessage}</p>
         )}
 
         <button
           type="submit"
-          className="rounded-md bg-indigo px-5 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-dark hover:shadow-md"
+          disabled={status === 'submitting'}
+          className="rounded-md bg-indigo px-5 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-dark hover:shadow-md disabled:translate-y-0 disabled:opacity-50 disabled:shadow-none"
         >
-          Sign in
+          {status === 'submitting' ? 'Signing in…' : 'Sign in'}
         </button>
       </form>
     </AuthLayout>

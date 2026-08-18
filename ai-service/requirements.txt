@@ -4,4 +4,3 @@ python-multipart
 opencv-python
 face-recognition
 numpy
-setuptools<81

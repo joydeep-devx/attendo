@@ -43,7 +43,7 @@ function Landing() {
             <header className="border-b border-line bg-paper-raised">
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
                     <span className="font-display text-lg font-semibold tracking-tight text-ink">
-                        Attendo
+                        Scheduler.ai
                     </span>
                     <div className="flex items-center gap-2">
                         <MotionLink
@@ -81,7 +81,7 @@ function Landing() {
                                 <TextType text="Timetables that build themselves and hold together" />
                             </h1>
                             <p className="mt-5 max-w-md text-slate">
-                                Attendo generates a full weekly schedule across
+                                Scheduler.ai generates a full weekly schedule across
                                 departments, sections, and rooms, then keeps
                                 attendance tied to the classes it scheduled. One
                                 system, one source of truth.
@@ -167,7 +167,7 @@ function Landing() {
             <footer className="border-t border-line">
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
                     <span className="font-display text-sm text-ink">
-                        Attendo
+                        Scheduler.ai
                     </span>
                     <span className="font-mono text-xs text-slate-soft">
                         College scheduling system
