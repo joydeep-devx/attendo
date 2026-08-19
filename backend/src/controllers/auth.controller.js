@@ -3,6 +3,42 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const Student = require("../models/student.model");
 
+const registerFace = async (req, res) => {
+    try {
+        const { embedding } = req.body;
+
+        if (!Array.isArray(embedding) || embedding.length !== 128) {
+            return res.status(400).json({
+                success: false,
+                message: "A 128-number face embedding is required",
+            });
+        }
+
+        const student = await Student.findById(req.user.profile);
+
+        if (!student) {
+            return res.status(404).json({
+                success: false,
+                message: "Student profile not found",
+            });
+        }
+
+        student.faceEmbeddings = [embedding];
+        await student.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Face registered successfully",
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Failed to register face",
+        });
+    }
+};
+
 const register = async (req, res) => {
     try {
         const {
@@ -170,6 +206,7 @@ const logout = async (req, res) => {
 
 module.exports = {
     register,
+    registerFace,
     login,
     logout,
     me,

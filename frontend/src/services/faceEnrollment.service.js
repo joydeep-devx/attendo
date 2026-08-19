@@ -49,7 +49,7 @@ export async function extractSingleFaceEmbedding(file) {
   return embedding
 }
 
-export async function enrollFace({ images, username, password, studentId }) {
+export async function enrollFace({ images, studentId }) {
   if (!Array.isArray(images) || images.length !== 5) {
     throw new Error('Exactly 5 snapshots are required')
   }
@@ -75,8 +75,6 @@ export async function enrollFace({ images, username, password, studentId }) {
   }
 
   await registerFace({
-    username,
-    password,
     embedding,
   })
 

@@ -2,6 +2,7 @@ const express = require("express");
 
 const {
     register,
+    registerFace,
     login,
     logout,
     me,
@@ -14,6 +15,7 @@ const authenticate = require(
 const router = express.Router();
 
 router.post("/register", register);
+router.post("/register-face", authenticate, registerFace);
 router.post("/login", login);
 router.post("/logout", logout);
 router.get("/me", authenticate, me);

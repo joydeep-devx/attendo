@@ -65,7 +65,7 @@ function Register() {
     async function handleFaceComplete(images) {
         setStatus("submitting");
         try {
-            await enrollFace(images);
+            await enrollFace({ images });
             navigate("/login");
         } catch (error) {
             setErrorMessage(error.message);
