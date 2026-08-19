@@ -20,7 +20,7 @@ const NAV_ITEMS = [
   { label: 'Teachers', path: '/teachers', icon: Users, roles: ['ADMIN'] },
   { label: 'Classrooms', path: null, icon: DoorOpen, roles: ['ADMIN'] },
   { label: 'Time Slots', path: '/time-slots', icon: Clock, roles: ['ADMIN'] },
-  { label: 'Schedule Configuration', path: null, icon: SlidersHorizontal, roles: ['ADMIN'] },
+  { label: 'Configuration', path: '/schedule-config', icon: SlidersHorizontal, roles: ['ADMIN'] },
   { label: 'Timetable', path: null, icon: CalendarDays, roles: ['ADMIN', 'TEACHER', 'STUDENT'] },
   { label: 'Attendance', path: null, icon: ClipboardCheck, roles: ['ADMIN', 'TEACHER', 'STUDENT'] },
 ]
