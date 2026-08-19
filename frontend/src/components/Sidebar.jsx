@@ -18,7 +18,7 @@ const NAV_ITEMS = [
   { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, roles: ['ADMIN', 'TEACHER', 'STUDENT'] },
   { label: 'Subjects', path: '/subjects', icon: BookOpen, roles: ['ADMIN'] },
   { label: 'Teachers', path: '/teachers', icon: Users, roles: ['ADMIN'] },
-  { label: 'Classrooms', path: null, icon: DoorOpen, roles: ['ADMIN'] },
+  { label: 'Classrooms', path: '/classrooms', icon: DoorOpen, roles: ['ADMIN'] },
   { label: 'Time Slots', path: '/time-slots', icon: Clock, roles: ['ADMIN'] },
   { label: 'Configuration', path: '/schedule-config', icon: SlidersHorizontal, roles: ['ADMIN'] },
   { label: 'Timetable', path: null, icon: CalendarDays, roles: ['ADMIN', 'TEACHER', 'STUDENT'] },
