@@ -1,0 +1,416 @@
+{
+  "metadata": {
+    "dataset_type": "current_user_input_multisection",
+    "academic_year": 2026,
+    "semester": 5,
+    "discipline": "CSE",
+    "note": "3 parallel CSE sections (Sem V) sharing one teacher pool -- for src/generate_multisection.py"
+  },
+  "schedule": {
+    "working_days": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT"
+    ],
+    "start_time": "09:45",
+    "end_time": "16:30",
+    "period_duration_minutes": 60,
+    "break": {
+      "start": "12:45",
+      "end": "13:30",
+      "duration_minutes": 45
+    }
+  },
+  "sections": [
+    {
+      "name": "CSE1",
+      "subjects": [
+        {
+          "subject_id": "ESC501",
+          "name": "Software Engineering",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "PCC-CS501",
+          "name": "Compiler Design",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "PCC-CS502",
+          "name": "Operating Systems",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "PCC-CS503",
+          "name": "Object Oriented Programming",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "HSMC501",
+          "name": "Introduction to Industrial Management",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "PEC-IT501B",
+          "name": "Artificial Intelligence",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "MC-CS501",
+          "name": "Constitution of India",
+          "type": "theory",
+          "weekly_periods": 3
+        },
+        {
+          "subject_id": "ESC591",
+          "name": "Software Engineering Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        },
+        {
+          "subject_id": "PCC-CS592",
+          "name": "Operating System Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        },
+        {
+          "subject_id": "PCC-CS593",
+          "name": "Object Oriented Programming Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        }
+      ]
+    },
+    {
+      "name": "CSE2",
+      "subjects": [
+        {
+          "subject_id": "ESC501",
+          "name": "Software Engineering",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "PCC-CS501",
+          "name": "Compiler Design",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "PCC-CS502",
+          "name": "Operating Systems",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "PCC-CS503",
+          "name": "Object Oriented Programming",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "HSMC501",
+          "name": "Introduction to Industrial Management",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "PEC-IT501B",
+          "name": "Artificial Intelligence",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "MC-CS501",
+          "name": "Constitution of India",
+          "type": "theory",
+          "weekly_periods": 3
+        },
+        {
+          "subject_id": "ESC591",
+          "name": "Software Engineering Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        },
+        {
+          "subject_id": "PCC-CS592",
+          "name": "Operating System Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        },
+        {
+          "subject_id": "PCC-CS593",
+          "name": "Object Oriented Programming Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        }
+      ]
+    },
+    {
+      "name": "CSE3",
+      "subjects": [
+        {
+          "subject_id": "ESC501",
+          "name": "Software Engineering",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "PCC-CS501",
+          "name": "Compiler Design",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "PCC-CS502",
+          "name": "Operating Systems",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "PCC-CS503",
+          "name": "Object Oriented Programming",
+          "type": "theory",
+          "weekly_periods": 5
+        },
+        {
+          "subject_id": "HSMC501",
+          "name": "Introduction to Industrial Management",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "PEC-IT501B",
+          "name": "Artificial Intelligence",
+          "type": "theory",
+          "weekly_periods": 4
+        },
+        {
+          "subject_id": "MC-CS501",
+          "name": "Constitution of India",
+          "type": "theory",
+          "weekly_periods": 3
+        },
+        {
+          "subject_id": "ESC591",
+          "name": "Software Engineering Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        },
+        {
+          "subject_id": "PCC-CS592",
+          "name": "Operating System Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        },
+        {
+          "subject_id": "PCC-CS593",
+          "name": "Object Oriented Programming Lab",
+          "type": "lab",
+          "weekly_periods": 2,
+          "consecutive_periods": 2
+        }
+      ]
+    }
+  ],
+  "teachers": [
+    {
+      "teacher_id": "T001",
+      "teacher_code": "SBR",
+      "name": "Sarbjit Rao",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "ESC501",
+        "PCC-CS501",
+        "PCC-CS503"
+      ],
+      "max_subjects": 3
+    },
+    {
+      "teacher_id": "T002",
+      "teacher_code": "PD",
+      "name": "Prof. Dutta",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS501",
+        "PCC-CS503",
+        "PCC-CS592"
+      ],
+      "max_subjects": 3
+    },
+    {
+      "teacher_id": "T003",
+      "teacher_code": "AP",
+      "name": "Amit Patel",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS502",
+        "PCC-CS592"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T004",
+      "teacher_code": "SH",
+      "name": "Suman Halder",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS502",
+        "PCC-CS503",
+        "PCC-CS593"
+      ],
+      "max_subjects": 3
+    },
+    {
+      "teacher_id": "T005",
+      "teacher_code": "NF",
+      "name": "Nikita Firoz",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "HSMC501"
+      ],
+      "max_subjects": 1
+    },
+    {
+      "teacher_id": "T006",
+      "teacher_code": "BBH",
+      "name": "Bhaskar Haldar",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "HSMC501",
+        "PEC-IT501B"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T007",
+      "teacher_code": "OS",
+      "name": "Omkar Sinha",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "PEC-IT501B"
+      ],
+      "max_subjects": 1
+    },
+    {
+      "teacher_id": "T008",
+      "teacher_code": "AM",
+      "name": "Aditi Mehta",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "PCC-CS593"
+      ],
+      "max_subjects": 1
+    },
+    {
+      "teacher_id": "T009",
+      "teacher_code": "RS",
+      "name": "Richa Sharma",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "ESC591",
+        "PCC-CS592"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T010",
+      "teacher_code": "VK",
+      "name": "Vikram Kumar",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "MC-CS501",
+        "ESC591"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T011",
+      "teacher_code": "RN",
+      "name": "Rohit Nair",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "subjects": [
+        "MC-CS501",
+        "ESC591",
+        "PCC-CS592"
+      ],
+      "max_subjects": 3
+    },
+    {
+      "teacher_id": "T012",
+      "teacher_code": "MS",
+      "name": "Megha Sen",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "ESC501",
+        "HSMC501",
+        "PEC-IT501B"
+      ],
+      "max_subjects": 3
+    },
+    {
+      "teacher_id": "T013",
+      "teacher_code": "RG",
+      "name": "Riya Ghosh",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "HSMC501",
+        "PEC-IT501B"
+      ],
+      "max_subjects": 2
+    },
+    {
+      "teacher_id": "T014",
+      "teacher_code": "SM",
+      "name": "Sourav Mukherjee",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "subjects": [
+        "PEC-IT501B",
+        "MC-CS501"
+      ],
+      "max_subjects": 2
+    }
+  ],
+  "rules": {
+    "same_section_same_theory_subject_one_teacher": true,
+    "different_sections_can_have_different_teachers": true,
+    "same_teacher_can_teach_multiple_sections": true,
+    "lab_teacher_can_be_different_from_theory_teacher": true,
+    "teacher_cannot_teach_two_classes_at_same_time": true,
+    "teacher_must_be_qualified_for_subject": true,
+    "lab_teacher_must_have_lab_permission": true,
+    "lab_must_be_consecutive": true,
+    "no_class_during_break": true
+  }
+}

@@ -6,12 +6,12 @@ import sys
 from pathlib import Path
 from typing import Any
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.conflict_checker import ScheduleState
-from src.validator import validate_timetable, write_timetable_csv
+from src.generators.single_section.conflict_checker import ScheduleState
+from src.generators.single_section.validator import validate_timetable, write_timetable_csv
 
 
 def _parse_time_to_minutes(value: str | None) -> int:
@@ -272,6 +272,7 @@ def generate_timetable(payload: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def generate_csv_timetable(payload_path: str | Path, output_path: str | Path | None = None) -> list[dict[str, Any]]:
+    import platform
     import signal
 
     payload_file = Path(payload_path)
@@ -283,30 +284,39 @@ def generate_csv_timetable(payload_path: str | Path, output_path: str | Path | N
     # while several back-to-back runs finished instantly. Rather than let
     # one unlucky run hang indefinitely, retry a few times with a hard
     # per-attempt time limit before giving up for real.
+    #
+    # signal.SIGALRM only exists on Unix (Linux/Mac) -- it is not available
+    # on Windows at all, so the alarm-based timeout is skipped there and we
+    # just fall back to plain bounded retries with no hard per-attempt cap.
     MAX_ATTEMPTS = 5
     PER_ATTEMPT_TIMEOUT_S = 10
     rows = None
+    has_alarm = platform.system() != "Windows" and hasattr(signal, "SIGALRM")
 
     def _handler(signum, frame):
         raise TimeoutError()
 
     for attempt in range(MAX_ATTEMPTS):
-        old_handler = signal.signal(signal.SIGALRM, _handler)
-        signal.alarm(PER_ATTEMPT_TIMEOUT_S)
+        if has_alarm:
+            old_handler = signal.signal(signal.SIGALRM, _handler)
+            signal.alarm(PER_ATTEMPT_TIMEOUT_S)
         try:
             rows = generate_timetable(payload)
-            signal.alarm(0)
+            if has_alarm:
+                signal.alarm(0)
             break
         except TimeoutError:
             print(f"  attempt {attempt + 1}/{MAX_ATTEMPTS} exceeded {PER_ATTEMPT_TIMEOUT_S}s -- retrying.")
             rows = None
         finally:
-            signal.signal(signal.SIGALRM, old_handler)
+            if has_alarm:
+                signal.signal(signal.SIGALRM, old_handler)
 
     if rows is None:
         raise TimeoutError(
-            f"Could not generate a timetable within {PER_ATTEMPT_TIMEOUT_S}s across "
-            f"{MAX_ATTEMPTS} attempts. This dataset may need a real constraint solver "
+            f"Could not generate a timetable within {MAX_ATTEMPTS} attempts"
+            + (f" ({PER_ATTEMPT_TIMEOUT_S}s cap each)" if has_alarm else "")
+            + ". This dataset may need a real constraint solver "
             "instead of backtracking for reliable zero-vacancy generation."
         )
 
@@ -318,7 +328,7 @@ def generate_csv_timetable(payload_path: str | Path, output_path: str | Path | N
 
 
 if __name__ == "__main__":
-    project_root = Path(__file__).resolve().parent.parent
+    project_root = Path(__file__).resolve().parents[3]
     json_path = project_root / "dataset" / "raw" / "current" / "demo_input.json"
     csv_path = project_root / "output" / "timetable.csv"
     rows = generate_csv_timetable(json_path, csv_path)

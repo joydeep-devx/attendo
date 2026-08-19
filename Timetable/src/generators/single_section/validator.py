@@ -6,11 +6,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.conflict_checker import ScheduleState
+from src.generators.single_section.conflict_checker import ScheduleState
 
 
 def _parse_time_to_minutes(value: str | int | None) -> int:

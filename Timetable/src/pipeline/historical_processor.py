@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 from src.json_handler import save_json_file
-from src.processing.current_processor import normalize_day, normalize_time
+from src.pipeline.current_processor import normalize_day, normalize_time
 
 CANONICAL_COLUMNS = [
     "source_file", "academic_year", "semester", "discipline", "section", "batch", "day",

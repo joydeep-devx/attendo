@@ -6,14 +6,14 @@ DataFrames, prints WHY any row got flagged, and writes only the two clean
 processed datasets needed by the NumPy and ML stages. JSON only, no CSV.
 """
 
-from src.data.data_loader import load_current_timetable_json, load_multiple_historical_jsons
-from src.processing.current_processor import (
+from src.pipeline.data_loader import load_current_timetable_json, load_multiple_historical_jsons
+from src.pipeline.current_processor import (
     build_current_dataframes,
     export_current_processed_data,
     report_current_quality_issues,
     get_training_ready_current,
 )
-from src.processing.historical_processor import (
+from src.pipeline.historical_processor import (
     build_historical_dataframe,
     export_historical_processed_data,
     report_historical_quality_issues,

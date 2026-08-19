@@ -2,8 +2,8 @@ import csv
 import json
 from pathlib import Path
 
-from Timetable.src.resolver import generate_timetable
-from Timetable.src.validator import write_timetable_csv
+from Timetable.src.generators.single_section.resolver import generate_timetable
+from Timetable.src.generators.single_section.validator import write_timetable_csv
 
 
 DATA_PATH = Path(__file__).resolve().parents[1] / "dataset" / "raw" / "current" / "demo_input.json"
@@ -39,7 +39,11 @@ def test_csv_contains_full_day_slots_and_break_row():
         table = list(csv.reader(handle))
 
     assert table[0] == ["Slot", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-    assert [row[0] for row in table[1:7]] == ["S1", "S2", "S3", "S4", "S5", "S6"]
-    assert any(row[0] == "Break 12:45-13:30" for row in table)
-    assert table[4][0] == "S5"
-    assert table[5][0] == "S6"
+    # write_timetable_csv inserts the break row right after S3 (it fires when
+    # the slot start is "11:45"), so the real row order is S1, S2, S3, Break,
+    # S4, S5, S6 -- 7 data rows after the header, not 6.
+    assert [row[0] for row in table[1:8]] == ["S1", "S2", "S3", "Break 12:45-13:30", "S4", "S5", "S6"]
+    assert table[4][0] == "Break 12:45-13:30"
+    assert table[5][0] == "S4"
+    assert table[6][0] == "S5"
+    assert table[7][0] == "S6"

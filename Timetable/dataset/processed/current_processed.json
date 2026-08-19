@@ -1,15 +1,25 @@
 {
   "metadata": {
     "status": "processed",
-    "subject_count": 7,
-    "teacher_qualification_count": 15
+    "subject_count": 10,
+    "teacher_qualification_count": 30
   },
   "subjects": [
     {
-      "subject_id": "PCC-CS501",
-      "subject_name": "Core Subject 1",
+      "subject_id": "ESC501",
+      "subject_name": "Software Engineering",
       "subject_type": "theory",
       "weekly_periods": 4,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "PCC-CS501",
+      "subject_name": "Compiler Design",
+      "subject_type": "theory",
+      "weekly_periods": 5,
       "consecutive_periods": null,
       "missing_subject_id": false,
       "invalid_weekly_periods": false,
@@ -17,9 +27,9 @@
     },
     {
       "subject_id": "PCC-CS502",
-      "subject_name": "Core Subject 2",
+      "subject_name": "Operating Systems",
       "subject_type": "theory",
-      "weekly_periods": 4,
+      "weekly_periods": 5,
       "consecutive_periods": null,
       "missing_subject_id": false,
       "invalid_weekly_periods": false,
@@ -27,7 +37,17 @@
     },
     {
       "subject_id": "PCC-CS503",
-      "subject_name": "Core Subject 3",
+      "subject_name": "Object Oriented Programming",
+      "subject_type": "theory",
+      "weekly_periods": 5,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "HSMC501",
+      "subject_name": "Introduction to Industrial Management",
       "subject_type": "theory",
       "weekly_periods": 4,
       "consecutive_periods": null,
@@ -36,8 +56,18 @@
       "weekly_periods_was_imputed": false
     },
     {
-      "subject_id": "HSMC501",
-      "subject_name": "HSMC",
+      "subject_id": "PEC-IT501B",
+      "subject_name": "Artificial Intelligence",
+      "subject_type": "theory",
+      "weekly_periods": 4,
+      "consecutive_periods": null,
+      "missing_subject_id": false,
+      "invalid_weekly_periods": false,
+      "weekly_periods_was_imputed": false
+    },
+    {
+      "subject_id": "MC-CS501",
+      "subject_name": "Constitution of India",
       "subject_type": "theory",
       "weekly_periods": 3,
       "consecutive_periods": null,
@@ -46,20 +76,20 @@
       "weekly_periods_was_imputed": false
     },
     {
-      "subject_id": "PEC-IT501B",
-      "subject_name": "Program Elective",
-      "subject_type": "theory",
-      "weekly_periods": 3,
-      "consecutive_periods": null,
+      "subject_id": "ESC591",
+      "subject_name": "Software Engineering Lab",
+      "subject_type": "lab",
+      "weekly_periods": 2,
+      "consecutive_periods": 2,
       "missing_subject_id": false,
       "invalid_weekly_periods": false,
       "weekly_periods_was_imputed": false
     },
     {
       "subject_id": "PCC-CS592",
-      "subject_name": "Core Lab 1",
+      "subject_name": "Operating System Lab",
       "subject_type": "lab",
-      "weekly_periods": 3,
+      "weekly_periods": 2,
       "consecutive_periods": 2,
       "missing_subject_id": false,
       "invalid_weekly_periods": false,
@@ -67,7 +97,7 @@
     },
     {
       "subject_id": "PCC-CS593",
-      "subject_name": "Core Lab 2",
+      "subject_name": "Object Oriented Programming Lab",
       "subject_type": "lab",
       "weekly_periods": 2,
       "consecutive_periods": 2,
@@ -80,29 +110,40 @@
     {
       "teacher_id": "T001",
       "teacher_code": "SBR",
-      "teacher_name": "Test Teacher A",
-      "subject_id": "PCC-CS501",
+      "teacher_name": "Sarbjit Rao",
+      "subject_id": "ESC501",
       "can_teach_theory": true,
       "can_teach_lab": false,
-      "max_subjects": 2,
+      "max_subjects": 3,
       "missing_teacher_id": false,
       "duplicate_qualification": false
     },
     {
       "teacher_id": "T001",
       "teacher_code": "SBR",
-      "teacher_name": "Test Teacher A",
+      "teacher_name": "Sarbjit Rao",
+      "subject_id": "PCC-CS501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T001",
+      "teacher_code": "SBR",
+      "teacher_name": "Sarbjit Rao",
       "subject_id": "PCC-CS503",
       "can_teach_theory": true,
       "can_teach_lab": false,
-      "max_subjects": 2,
+      "max_subjects": 3,
       "missing_teacher_id": false,
       "duplicate_qualification": false
     },
     {
       "teacher_id": "T002",
       "teacher_code": "PD",
-      "teacher_name": "Test Teacher B",
+      "teacher_name": "Prof. Dutta",
       "subject_id": "PCC-CS501",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -113,7 +154,7 @@
     {
       "teacher_id": "T002",
       "teacher_code": "PD",
-      "teacher_name": "Test Teacher B",
+      "teacher_name": "Prof. Dutta",
       "subject_id": "PCC-CS503",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -124,7 +165,7 @@
     {
       "teacher_id": "T002",
       "teacher_code": "PD",
-      "teacher_name": "Test Teacher B",
+      "teacher_name": "Prof. Dutta",
       "subject_id": "PCC-CS592",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -135,7 +176,7 @@
     {
       "teacher_id": "T003",
       "teacher_code": "AP",
-      "teacher_name": "Test Teacher C",
+      "teacher_name": "Amit Patel",
       "subject_id": "PCC-CS502",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -146,7 +187,7 @@
     {
       "teacher_id": "T003",
       "teacher_code": "AP",
-      "teacher_name": "Test Teacher C",
+      "teacher_name": "Amit Patel",
       "subject_id": "PCC-CS592",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -157,7 +198,7 @@
     {
       "teacher_id": "T004",
       "teacher_code": "SH",
-      "teacher_name": "Test Teacher D",
+      "teacher_name": "Suman Halder",
       "subject_id": "PCC-CS502",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -168,7 +209,7 @@
     {
       "teacher_id": "T004",
       "teacher_code": "SH",
-      "teacher_name": "Test Teacher D",
+      "teacher_name": "Suman Halder",
       "subject_id": "PCC-CS503",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -179,7 +220,7 @@
     {
       "teacher_id": "T004",
       "teacher_code": "SH",
-      "teacher_name": "Test Teacher D",
+      "teacher_name": "Suman Halder",
       "subject_id": "PCC-CS593",
       "can_teach_theory": true,
       "can_teach_lab": true,
@@ -189,8 +230,8 @@
     },
     {
       "teacher_id": "T005",
-      "teacher_code": "NF(MM)",
-      "teacher_name": "Test Teacher E",
+      "teacher_code": "NF",
+      "teacher_name": "Nikita Firoz",
       "subject_id": "HSMC501",
       "can_teach_theory": true,
       "can_teach_lab": false,
@@ -201,7 +242,7 @@
     {
       "teacher_id": "T006",
       "teacher_code": "BBH",
-      "teacher_name": "Test Teacher F",
+      "teacher_name": "Bhaskar Haldar",
       "subject_id": "HSMC501",
       "can_teach_theory": true,
       "can_teach_lab": false,
@@ -212,7 +253,7 @@
     {
       "teacher_id": "T006",
       "teacher_code": "BBH",
-      "teacher_name": "Test Teacher F",
+      "teacher_name": "Bhaskar Haldar",
       "subject_id": "PEC-IT501B",
       "can_teach_theory": true,
       "can_teach_lab": false,
@@ -223,7 +264,7 @@
     {
       "teacher_id": "T007",
       "teacher_code": "OS",
-      "teacher_name": "Test Teacher G",
+      "teacher_name": "Omkar Sinha",
       "subject_id": "PEC-IT501B",
       "can_teach_theory": true,
       "can_teach_lab": false,
@@ -234,11 +275,165 @@
     {
       "teacher_id": "T008",
       "teacher_code": "AM",
-      "teacher_name": "Test Teacher H",
+      "teacher_name": "Aditi Mehta",
       "subject_id": "PCC-CS593",
       "can_teach_theory": true,
       "can_teach_lab": true,
       "max_subjects": 1,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T009",
+      "teacher_code": "RS",
+      "teacher_name": "Richa Sharma",
+      "subject_id": "ESC591",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T009",
+      "teacher_code": "RS",
+      "teacher_name": "Richa Sharma",
+      "subject_id": "PCC-CS592",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T010",
+      "teacher_code": "VK",
+      "teacher_name": "Vikram Kumar",
+      "subject_id": "MC-CS501",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T010",
+      "teacher_code": "VK",
+      "teacher_name": "Vikram Kumar",
+      "subject_id": "ESC591",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T011",
+      "teacher_code": "RN",
+      "teacher_name": "Rohit Nair",
+      "subject_id": "MC-CS501",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T011",
+      "teacher_code": "RN",
+      "teacher_name": "Rohit Nair",
+      "subject_id": "ESC591",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T011",
+      "teacher_code": "RN",
+      "teacher_name": "Rohit Nair",
+      "subject_id": "PCC-CS592",
+      "can_teach_theory": true,
+      "can_teach_lab": true,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T012",
+      "teacher_code": "MS",
+      "teacher_name": "Megha Sen",
+      "subject_id": "ESC501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T012",
+      "teacher_code": "MS",
+      "teacher_name": "Megha Sen",
+      "subject_id": "HSMC501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T012",
+      "teacher_code": "MS",
+      "teacher_name": "Megha Sen",
+      "subject_id": "PEC-IT501B",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 3,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T013",
+      "teacher_code": "RG",
+      "teacher_name": "Riya Ghosh",
+      "subject_id": "HSMC501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T013",
+      "teacher_code": "RG",
+      "teacher_name": "Riya Ghosh",
+      "subject_id": "PEC-IT501B",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T014",
+      "teacher_code": "SM",
+      "teacher_name": "Sourav Mukherjee",
+      "subject_id": "PEC-IT501B",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
+      "missing_teacher_id": false,
+      "duplicate_qualification": false
+    },
+    {
+      "teacher_id": "T014",
+      "teacher_code": "SM",
+      "teacher_name": "Sourav Mukherjee",
+      "subject_id": "MC-CS501",
+      "can_teach_theory": true,
+      "can_teach_lab": false,
+      "max_subjects": 2,
       "missing_teacher_id": false,
       "duplicate_qualification": false
     }

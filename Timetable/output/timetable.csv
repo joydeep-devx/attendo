@@ -1,8 +1,8 @@
 Slot,MON,TUE,WED,THU,FRI,SAT
-S1,PCC-CS503 (Suman Halder),PCC-CS501 (Sarbjit Rao),PEC-IT501B (Omkar Sinha),PCC-CS503 (Suman Halder),PCC-CS502 (Suman Halder),PCC-CS501 (Prof. Dutta)
-S2,HSMC501 (Bhaskar Haldar),PCC-CS502 (Suman Halder),MC-CS501 (Vikram Kumar),PCC-CS502 (Suman Halder),PCC-CS503 (Suman Halder),PEC-IT501B (Riya Ghosh)
-S3,PCC-CS501 (Sarbjit Rao),ESC501 (Megha Sen),,MC-CS501 (Sourav Mukherjee),PEC-IT501B (Riya Ghosh),PCC-CS502 (Amit Patel)
+S1,PCC-CS503 (Sarbjit Rao),PCC-CS501 (Prof. Dutta),PCC-CS593-LAB (Aditi Mehta),MC-CS501 (Rohit Nair),PCC-CS501 (Prof. Dutta),PCC-CS503 (Sarbjit Rao)
+S2,PEC-IT501B (Bhaskar Haldar),PCC-CS502 (Suman Halder),PCC-CS593-LAB (Aditi Mehta),PCC-CS502 (Suman Halder),PCC-CS503 (Sarbjit Rao),PCC-CS502 (Suman Halder)
+S3,PCC-CS502 (Suman Halder),ESC501 (Megha Sen),MC-CS501 (Rohit Nair),PEC-IT501B (Bhaskar Haldar),PCC-CS502 (Suman Halder),PCC-CS501 (Prof. Dutta)
 Break 12:45-13:30,Break,Break,Break,Break,Break,Break
-S4,PCC-CS502 (Amit Patel),ESC591 (Richa Sharma),PCC-CS501 (Sarbjit Rao),PCC-CS501 (Prof. Dutta),,PCC-CS503 (Suman Halder)
-S5,MC-CS501 (Vikram Kumar),ESC591 (Richa Sharma),PCC-CS503 (Suman Halder),PEC-IT501B (Riya Ghosh),PCC-CS593 (Aditi Mehta),PCC-CS592 (Rohit Nair)
-S6,,,,,PCC-CS593 (Aditi Mehta),PCC-CS592 (Rohit Nair)
+S4,HSMC501 (Riya Ghosh),PCC-CS503 (Sarbjit Rao),PEC-IT501B (Bhaskar Haldar),PCC-CS503 (Sarbjit Rao),HSMC501 (Riya Ghosh),PCC-CS592-LAB (Amit Patel)
+S5,PCC-CS501 (Prof. Dutta),ESC591-LAB (Vikram Kumar),PCC-CS501 (Prof. Dutta),ESC501 (Megha Sen),PEC-IT501B (Bhaskar Haldar),PCC-CS592-LAB (Amit Patel)
+S6,MC-CS501 (Rohit Nair),ESC591-LAB (Vikram Kumar),ESC501 (Megha Sen),HSMC501 (Riya Ghosh),ESC501 (Megha Sen),HSMC501 (Riya Ghosh)

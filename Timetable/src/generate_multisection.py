@@ -16,10 +16,14 @@ import json
 import sys
 from pathlib import Path
 
-from src.multisection.solve import solve
-from src.multisection.format_output import write_section_csvs
+# NOTE: this was previously `Path(__file__).resolve().parent`, which points at
+# src/ instead of the project root -- dataset/ and output/ live one level up.
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-ROOT = Path(__file__).resolve().parent
+from src.generators.multisection.solve import solve
+from src.generators.multisection.format_output import write_section_csvs
 DATA_PATH = ROOT / "dataset" / "raw" / "current" / "demo_input_3section_shared.json"
 OUTPUT_DIR = ROOT / "output"
 
