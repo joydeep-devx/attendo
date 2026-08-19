@@ -6,6 +6,7 @@ import RoleSelector from "../../components/RoleSelector";
 import FaceCapture from "../../components/FaceCapture";
 import { register } from "../../services/auth.service";
 import { enrollFace } from "../../services/faceEnrollment.service";
+import { useAuth } from "../../context/AuthContext";
 
 const initialFormState = {
     role: "student",
@@ -25,6 +26,7 @@ function Register() {
     const [status, setStatus] = useState("idle");
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -51,6 +53,7 @@ function Register() {
                 username: formData.username,
                 password: formData.password,
             });
+            await login(formData.username, formData.password);
             setStatus("idle");
             setStep("face");
         } catch (error) {
@@ -62,12 +65,7 @@ function Register() {
     async function handleFaceComplete(images) {
         setStatus("submitting");
         try {
-            await enrollFace({
-                images,
-                username: formData.username,
-                password: formData.password,
-                studentId: formData.studentRollNo,
-            });
+            await enrollFace(images);
             navigate("/login");
         } catch (error) {
             setErrorMessage(error.message);

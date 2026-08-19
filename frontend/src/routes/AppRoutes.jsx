@@ -11,6 +11,10 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import ProtectedRoute from "../components/ProtectedRoute";
 import TimeSlots from "../pages/TimeSlots/TimeSlots";
+import ScheduleConfigs from "../pages/ScheduleConfig/ScheduleConfigs";
+import ScheduleConfigForm from "../pages/ScheduleConfig/ScheduleConfigForm";
+import Classrooms from "../pages/Classrooms/Classrooms";
+import ClassroomForm from "../pages/Classrooms/ClassroomForm";
 
 function AppShell({ children, allowedRoles }) {
     return (
@@ -42,7 +46,6 @@ function AppRoutes() {
                     </AppShell>
                 }
             />
-
             <Route
                 path="/subjects"
                 element={
@@ -83,7 +86,6 @@ function AppRoutes() {
                     </AppShell>
                 }
             />
-
             <Route
                 path="/time-slots"
                 element={
@@ -92,6 +94,55 @@ function AppRoutes() {
                     </AppShell>
                 }
             />
+            <Route
+                path="/schedule-config"
+                element={
+                    <AppShell allowedRoles={["ADMIN"]}>
+                        <ScheduleConfigs />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/schedule-config/new"
+                element={
+                    <AppShell allowedRoles={["ADMIN"]}>
+                        <ScheduleConfigForm />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/schedule-config/:id/edit"
+                element={
+                    <AppShell allowedRoles={["ADMIN"]}>
+                        <ScheduleConfigForm />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/classrooms"
+                element={
+                    <AppShell allowedRoles={["ADMIN"]}>
+                        <Classrooms />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/classrooms/new"
+                element={
+                    <AppShell allowedRoles={["ADMIN"]}>
+                        <ClassroomForm />
+                    </AppShell>
+                }
+            />
+            <Route
+                path="/classrooms/:id/edit"
+                element={
+                    <AppShell allowedRoles={["ADMIN"]}>
+                        <ClassroomForm />
+                    </AppShell>
+                }
+            />
+            Notes:
         </Routes>
     );
 }
